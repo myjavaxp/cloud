@@ -9,7 +9,7 @@
 	<modules>
 		<module>springboothello</module>
 		<module>ribbonconsumer</module>
-		<module>springboothello</module>
+		<module>eurekaserver</module>
 	</modules>
 	<packaging>pom</packaging>
 
