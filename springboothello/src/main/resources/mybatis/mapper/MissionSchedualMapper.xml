@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.MissionSchedualMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.MissionSchedual">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mission_id" jdbcType="BIGINT" property="missionId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="dealer_id" jdbcType="BIGINT" property="dealerId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="complain_date" jdbcType="DATE" property="complainDate" />
+    <result column="check_date" jdbcType="DATE" property="checkDate" />
+    <result column="approve_status" jdbcType="TINYINT" property="approveStatus" />
+    <result column="first_appr_sug" jdbcType="VARCHAR" property="firstApprSug" />
+    <result column="repeat_appr_sug" jdbcType="VARCHAR" property="repeatApprSug" />
+    <result column="platform_appr_sug" jdbcType="VARCHAR" property="platformApprSug" />
+    <result column="arrive_date" jdbcType="TIMESTAMP" property="arriveDate" />
+    <result column="left_date" jdbcType="TIMESTAMP" property="leftDate" />
+    <result column="score" jdbcType="DECIMAL" property="score" />
+    <result column="complain_status" jdbcType="TINYINT" property="complainStatus" />
+    <result column="first_comp_user" jdbcType="VARCHAR" property="firstCompUser" />
+    <result column="first_comp_date" jdbcType="TIMESTAMP" property="firstCompDate" />
+    <result column="second_comp_user" jdbcType="VARCHAR" property="secondCompUser" />
+    <result column="second_comp_date" jdbcType="TIMESTAMP" property="secondCompDate" />
+    <result column="platform_comp_user" jdbcType="VARCHAR" property="platformCompUser" />
+    <result column="platform_com_date" jdbcType="TIMESTAMP" property="platformComDate" />
+    <result column="third_party_comp_user" jdbcType="VARCHAR" property="thirdPartyCompUser" />
+    <result column="third_party_comp_date" jdbcType="TIMESTAMP" property="thirdPartyCompDate" />
+    <result column="brand_comp_user" jdbcType="VARCHAR" property="brandCompUser" />
+    <result column="brand_comp_date" jdbcType="TIMESTAMP" property="brandCompDate" />
+    <result column="is_release" jdbcType="TINYINT" property="isRelease" />
+    <result column="release_date" jdbcType="TIMESTAMP" property="releaseDate" />
+    <result column="commit_comp_deadline" jdbcType="TIMESTAMP" property="commitCompDeadline" />
+    <result column="first_comp_deadline" jdbcType="TIMESTAMP" property="firstCompDeadline" />
+    <result column="second_comp_deadline" jdbcType="TIMESTAMP" property="secondCompDeadline" />
+    <result column="is_approve" jdbcType="TINYINT" property="isApprove" />
+    <result column="inp_unqualified_qty" jdbcType="TINYINT" property="inpUnqualifiedQty" />
+    <result column="first_comp_unqlf_qty" jdbcType="TINYINT" property="firstCompUnqlfQty" />
+    <result column="second_comp_unqlf_qty" jdbcType="TINYINT" property="secondCompUnqlfQty" />
+    <result column="final_comp_unqlf_qty" jdbcType="TINYINT" property="finalCompUnqlfQty" />
+    <result column="rssc_avg_score" jdbcType="DECIMAL" property="rsscAvgScore" />
+    <result column="country_avg_score" jdbcType="DECIMAL" property="countryAvgScore" />
+    <result column="is_no_check" jdbcType="TINYINT" property="isNoCheck" />
+    <result column="questionare_img_url" jdbcType="VARCHAR" property="questionareImgUrl" />
+    <result column="report_img_url" jdbcType="VARCHAR" property="reportImgUrl" />
+    <result column="accompany_img_url" jdbcType="VARCHAR" property="accompanyImgUrl" />
+    <result column="group_photo_img_url" jdbcType="VARCHAR" property="groupPhotoImgUrl" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mission_id, user_id, dealer_id, description, img_url, complain_date, check_date, 
+    approve_status, first_appr_sug, repeat_appr_sug, platform_appr_sug, arrive_date, 
+    left_date, score, complain_status, first_comp_user, first_comp_date, second_comp_user, 
+    second_comp_date, platform_comp_user, platform_com_date, third_party_comp_user, third_party_comp_date, 
+    brand_comp_user, brand_comp_date, is_release, release_date, commit_comp_deadline, 
+    first_comp_deadline, second_comp_deadline, is_approve, inp_unqualified_qty, first_comp_unqlf_qty, 
+    second_comp_unqlf_qty, final_comp_unqlf_qty, rssc_avg_score, country_avg_score, is_no_check, 
+    questionare_img_url, report_img_url, accompany_img_url, group_photo_img_url, remark, 
+    status, create_user, create_time, last_update_user, last_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mission_schedual
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mission_schedual
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.MissionSchedual">
+    insert into mission_schedual (id, mission_id, user_id, 
+      dealer_id, description, img_url, 
+      complain_date, check_date, approve_status, 
+      first_appr_sug, repeat_appr_sug, platform_appr_sug, 
+      arrive_date, left_date, score, 
+      complain_status, first_comp_user, first_comp_date, 
+      second_comp_user, second_comp_date, platform_comp_user, 
+      platform_com_date, third_party_comp_user, 
+      third_party_comp_date, brand_comp_user, brand_comp_date, 
+      is_release, release_date, commit_comp_deadline, 
+      first_comp_deadline, second_comp_deadline, 
+      is_approve, inp_unqualified_qty, first_comp_unqlf_qty, 
+      second_comp_unqlf_qty, final_comp_unqlf_qty, 
+      rssc_avg_score, country_avg_score, is_no_check, 
+      questionare_img_url, report_img_url, accompany_img_url, 
+      group_photo_img_url, remark, status, 
+      create_user, create_time, last_update_user, 
+      last_update_time)
+    values (#{id,jdbcType=BIGINT}, #{missionId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{dealerId,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{complainDate,jdbcType=DATE}, #{checkDate,jdbcType=DATE}, #{approveStatus,jdbcType=TINYINT}, 
+      #{firstApprSug,jdbcType=VARCHAR}, #{repeatApprSug,jdbcType=VARCHAR}, #{platformApprSug,jdbcType=VARCHAR}, 
+      #{arriveDate,jdbcType=TIMESTAMP}, #{leftDate,jdbcType=TIMESTAMP}, #{score,jdbcType=DECIMAL}, 
+      #{complainStatus,jdbcType=TINYINT}, #{firstCompUser,jdbcType=VARCHAR}, #{firstCompDate,jdbcType=TIMESTAMP}, 
+      #{secondCompUser,jdbcType=VARCHAR}, #{secondCompDate,jdbcType=TIMESTAMP}, #{platformCompUser,jdbcType=VARCHAR}, 
+      #{platformComDate,jdbcType=TIMESTAMP}, #{thirdPartyCompUser,jdbcType=VARCHAR}, 
+      #{thirdPartyCompDate,jdbcType=TIMESTAMP}, #{brandCompUser,jdbcType=VARCHAR}, #{brandCompDate,jdbcType=TIMESTAMP}, 
+      #{isRelease,jdbcType=TINYINT}, #{releaseDate,jdbcType=TIMESTAMP}, #{commitCompDeadline,jdbcType=TIMESTAMP}, 
+      #{firstCompDeadline,jdbcType=TIMESTAMP}, #{secondCompDeadline,jdbcType=TIMESTAMP}, 
+      #{isApprove,jdbcType=TINYINT}, #{inpUnqualifiedQty,jdbcType=TINYINT}, #{firstCompUnqlfQty,jdbcType=TINYINT}, 
+      #{secondCompUnqlfQty,jdbcType=TINYINT}, #{finalCompUnqlfQty,jdbcType=TINYINT}, 
+      #{rsscAvgScore,jdbcType=DECIMAL}, #{countryAvgScore,jdbcType=DECIMAL}, #{isNoCheck,jdbcType=TINYINT}, 
+      #{questionareImgUrl,jdbcType=VARCHAR}, #{reportImgUrl,jdbcType=VARCHAR}, #{accompanyImgUrl,jdbcType=VARCHAR}, 
+      #{groupPhotoImgUrl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.MissionSchedual">
+    insert into mission_schedual
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="missionId != null">
+        mission_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="dealerId != null">
+        dealer_id,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="complainDate != null">
+        complain_date,
+      </if>
+      <if test="checkDate != null">
+        check_date,
+      </if>
+      <if test="approveStatus != null">
+        approve_status,
+      </if>
+      <if test="firstApprSug != null">
+        first_appr_sug,
+      </if>
+      <if test="repeatApprSug != null">
+        repeat_appr_sug,
+      </if>
+      <if test="platformApprSug != null">
+        platform_appr_sug,
+      </if>
+      <if test="arriveDate != null">
+        arrive_date,
+      </if>
+      <if test="leftDate != null">
+        left_date,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="complainStatus != null">
+        complain_status,
+      </if>
+      <if test="firstCompUser != null">
+        first_comp_user,
+      </if>
+      <if test="firstCompDate != null">
+        first_comp_date,
+      </if>
+      <if test="secondCompUser != null">
+        second_comp_user,
+      </if>
+      <if test="secondCompDate != null">
+        second_comp_date,
+      </if>
+      <if test="platformCompUser != null">
+        platform_comp_user,
+      </if>
+      <if test="platformComDate != null">
+        platform_com_date,
+      </if>
+      <if test="thirdPartyCompUser != null">
+        third_party_comp_user,
+      </if>
+      <if test="thirdPartyCompDate != null">
+        third_party_comp_date,
+      </if>
+      <if test="brandCompUser != null">
+        brand_comp_user,
+      </if>
+      <if test="brandCompDate != null">
+        brand_comp_date,
+      </if>
+      <if test="isRelease != null">
+        is_release,
+      </if>
+      <if test="releaseDate != null">
+        release_date,
+      </if>
+      <if test="commitCompDeadline != null">
+        commit_comp_deadline,
+      </if>
+      <if test="firstCompDeadline != null">
+        first_comp_deadline,
+      </if>
+      <if test="secondCompDeadline != null">
+        second_comp_deadline,
+      </if>
+      <if test="isApprove != null">
+        is_approve,
+      </if>
+      <if test="inpUnqualifiedQty != null">
+        inp_unqualified_qty,
+      </if>
+      <if test="firstCompUnqlfQty != null">
+        first_comp_unqlf_qty,
+      </if>
+      <if test="secondCompUnqlfQty != null">
+        second_comp_unqlf_qty,
+      </if>
+      <if test="finalCompUnqlfQty != null">
+        final_comp_unqlf_qty,
+      </if>
+      <if test="rsscAvgScore != null">
+        rssc_avg_score,
+      </if>
+      <if test="countryAvgScore != null">
+        country_avg_score,
+      </if>
+      <if test="isNoCheck != null">
+        is_no_check,
+      </if>
+      <if test="questionareImgUrl != null">
+        questionare_img_url,
+      </if>
+      <if test="reportImgUrl != null">
+        report_img_url,
+      </if>
+      <if test="accompanyImgUrl != null">
+        accompany_img_url,
+      </if>
+      <if test="groupPhotoImgUrl != null">
+        group_photo_img_url,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="missionId != null">
+        #{missionId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="dealerId != null">
+        #{dealerId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="complainDate != null">
+        #{complainDate,jdbcType=DATE},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=DATE},
+      </if>
+      <if test="approveStatus != null">
+        #{approveStatus,jdbcType=TINYINT},
+      </if>
+      <if test="firstApprSug != null">
+        #{firstApprSug,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatApprSug != null">
+        #{repeatApprSug,jdbcType=VARCHAR},
+      </if>
+      <if test="platformApprSug != null">
+        #{platformApprSug,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDate != null">
+        #{arriveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leftDate != null">
+        #{leftDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="complainStatus != null">
+        #{complainStatus,jdbcType=TINYINT},
+      </if>
+      <if test="firstCompUser != null">
+        #{firstCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCompDate != null">
+        #{firstCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondCompUser != null">
+        #{secondCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCompDate != null">
+        #{secondCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platformCompUser != null">
+        #{platformCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="platformComDate != null">
+        #{platformComDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thirdPartyCompUser != null">
+        #{thirdPartyCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartyCompDate != null">
+        #{thirdPartyCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brandCompUser != null">
+        #{brandCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCompDate != null">
+        #{brandCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isRelease != null">
+        #{isRelease,jdbcType=TINYINT},
+      </if>
+      <if test="releaseDate != null">
+        #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commitCompDeadline != null">
+        #{commitCompDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstCompDeadline != null">
+        #{firstCompDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondCompDeadline != null">
+        #{secondCompDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isApprove != null">
+        #{isApprove,jdbcType=TINYINT},
+      </if>
+      <if test="inpUnqualifiedQty != null">
+        #{inpUnqualifiedQty,jdbcType=TINYINT},
+      </if>
+      <if test="firstCompUnqlfQty != null">
+        #{firstCompUnqlfQty,jdbcType=TINYINT},
+      </if>
+      <if test="secondCompUnqlfQty != null">
+        #{secondCompUnqlfQty,jdbcType=TINYINT},
+      </if>
+      <if test="finalCompUnqlfQty != null">
+        #{finalCompUnqlfQty,jdbcType=TINYINT},
+      </if>
+      <if test="rsscAvgScore != null">
+        #{rsscAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="countryAvgScore != null">
+        #{countryAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="isNoCheck != null">
+        #{isNoCheck,jdbcType=TINYINT},
+      </if>
+      <if test="questionareImgUrl != null">
+        #{questionareImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="reportImgUrl != null">
+        #{reportImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="accompanyImgUrl != null">
+        #{accompanyImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPhotoImgUrl != null">
+        #{groupPhotoImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.MissionSchedual">
+    update mission_schedual
+    <set>
+      <if test="missionId != null">
+        mission_id = #{missionId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="dealerId != null">
+        dealer_id = #{dealerId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="complainDate != null">
+        complain_date = #{complainDate,jdbcType=DATE},
+      </if>
+      <if test="checkDate != null">
+        check_date = #{checkDate,jdbcType=DATE},
+      </if>
+      <if test="approveStatus != null">
+        approve_status = #{approveStatus,jdbcType=TINYINT},
+      </if>
+      <if test="firstApprSug != null">
+        first_appr_sug = #{firstApprSug,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatApprSug != null">
+        repeat_appr_sug = #{repeatApprSug,jdbcType=VARCHAR},
+      </if>
+      <if test="platformApprSug != null">
+        platform_appr_sug = #{platformApprSug,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDate != null">
+        arrive_date = #{arriveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leftDate != null">
+        left_date = #{leftDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="complainStatus != null">
+        complain_status = #{complainStatus,jdbcType=TINYINT},
+      </if>
+      <if test="firstCompUser != null">
+        first_comp_user = #{firstCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCompDate != null">
+        first_comp_date = #{firstCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondCompUser != null">
+        second_comp_user = #{secondCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCompDate != null">
+        second_comp_date = #{secondCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platformCompUser != null">
+        platform_comp_user = #{platformCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="platformComDate != null">
+        platform_com_date = #{platformComDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thirdPartyCompUser != null">
+        third_party_comp_user = #{thirdPartyCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartyCompDate != null">
+        third_party_comp_date = #{thirdPartyCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brandCompUser != null">
+        brand_comp_user = #{brandCompUser,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCompDate != null">
+        brand_comp_date = #{brandCompDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isRelease != null">
+        is_release = #{isRelease,jdbcType=TINYINT},
+      </if>
+      <if test="releaseDate != null">
+        release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commitCompDeadline != null">
+        commit_comp_deadline = #{commitCompDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstCompDeadline != null">
+        first_comp_deadline = #{firstCompDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondCompDeadline != null">
+        second_comp_deadline = #{secondCompDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isApprove != null">
+        is_approve = #{isApprove,jdbcType=TINYINT},
+      </if>
+      <if test="inpUnqualifiedQty != null">
+        inp_unqualified_qty = #{inpUnqualifiedQty,jdbcType=TINYINT},
+      </if>
+      <if test="firstCompUnqlfQty != null">
+        first_comp_unqlf_qty = #{firstCompUnqlfQty,jdbcType=TINYINT},
+      </if>
+      <if test="secondCompUnqlfQty != null">
+        second_comp_unqlf_qty = #{secondCompUnqlfQty,jdbcType=TINYINT},
+      </if>
+      <if test="finalCompUnqlfQty != null">
+        final_comp_unqlf_qty = #{finalCompUnqlfQty,jdbcType=TINYINT},
+      </if>
+      <if test="rsscAvgScore != null">
+        rssc_avg_score = #{rsscAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="countryAvgScore != null">
+        country_avg_score = #{countryAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="isNoCheck != null">
+        is_no_check = #{isNoCheck,jdbcType=TINYINT},
+      </if>
+      <if test="questionareImgUrl != null">
+        questionare_img_url = #{questionareImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="reportImgUrl != null">
+        report_img_url = #{reportImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="accompanyImgUrl != null">
+        accompany_img_url = #{accompanyImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPhotoImgUrl != null">
+        group_photo_img_url = #{groupPhotoImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.MissionSchedual">
+    update mission_schedual
+    set mission_id = #{missionId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      dealer_id = #{dealerId,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      complain_date = #{complainDate,jdbcType=DATE},
+      check_date = #{checkDate,jdbcType=DATE},
+      approve_status = #{approveStatus,jdbcType=TINYINT},
+      first_appr_sug = #{firstApprSug,jdbcType=VARCHAR},
+      repeat_appr_sug = #{repeatApprSug,jdbcType=VARCHAR},
+      platform_appr_sug = #{platformApprSug,jdbcType=VARCHAR},
+      arrive_date = #{arriveDate,jdbcType=TIMESTAMP},
+      left_date = #{leftDate,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=DECIMAL},
+      complain_status = #{complainStatus,jdbcType=TINYINT},
+      first_comp_user = #{firstCompUser,jdbcType=VARCHAR},
+      first_comp_date = #{firstCompDate,jdbcType=TIMESTAMP},
+      second_comp_user = #{secondCompUser,jdbcType=VARCHAR},
+      second_comp_date = #{secondCompDate,jdbcType=TIMESTAMP},
+      platform_comp_user = #{platformCompUser,jdbcType=VARCHAR},
+      platform_com_date = #{platformComDate,jdbcType=TIMESTAMP},
+      third_party_comp_user = #{thirdPartyCompUser,jdbcType=VARCHAR},
+      third_party_comp_date = #{thirdPartyCompDate,jdbcType=TIMESTAMP},
+      brand_comp_user = #{brandCompUser,jdbcType=VARCHAR},
+      brand_comp_date = #{brandCompDate,jdbcType=TIMESTAMP},
+      is_release = #{isRelease,jdbcType=TINYINT},
+      release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      commit_comp_deadline = #{commitCompDeadline,jdbcType=TIMESTAMP},
+      first_comp_deadline = #{firstCompDeadline,jdbcType=TIMESTAMP},
+      second_comp_deadline = #{secondCompDeadline,jdbcType=TIMESTAMP},
+      is_approve = #{isApprove,jdbcType=TINYINT},
+      inp_unqualified_qty = #{inpUnqualifiedQty,jdbcType=TINYINT},
+      first_comp_unqlf_qty = #{firstCompUnqlfQty,jdbcType=TINYINT},
+      second_comp_unqlf_qty = #{secondCompUnqlfQty,jdbcType=TINYINT},
+      final_comp_unqlf_qty = #{finalCompUnqlfQty,jdbcType=TINYINT},
+      rssc_avg_score = #{rsscAvgScore,jdbcType=DECIMAL},
+      country_avg_score = #{countryAvgScore,jdbcType=DECIMAL},
+      is_no_check = #{isNoCheck,jdbcType=TINYINT},
+      questionare_img_url = #{questionareImgUrl,jdbcType=VARCHAR},
+      report_img_url = #{reportImgUrl,jdbcType=VARCHAR},
+      accompany_img_url = #{accompanyImgUrl,jdbcType=VARCHAR},
+      group_photo_img_url = #{groupPhotoImgUrl,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.MissionMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.Mission">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="brand_id" jdbcType="BIGINT" property="brandId" />
+    <result column="template_id" jdbcType="BIGINT" property="templateId" />
+    <result column="brand_template_id" jdbcType="BIGINT" property="brandTemplateId" />
+    <result column="template_skoda_id" jdbcType="BIGINT" property="templateSkodaId" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+    <result column="season" jdbcType="VARCHAR" property="season" />
+    <result column="mission_name" jdbcType="VARCHAR" property="missionName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="dealer_qty" jdbcType="TINYINT" property="dealerQty" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, brand_id, template_id, brand_template_id, template_skoda_id, year, season, mission_name, 
+    description, start_date, end_date, dealer_qty, status, is_delete, create_user, create_time, 
+    last_update_user, last_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mission
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mission
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.Mission">
+    insert into mission (id, brand_id, template_id, 
+      brand_template_id, template_skoda_id, year, 
+      season, mission_name, description, 
+      start_date, end_date, dealer_qty, 
+      status, is_delete, create_user, 
+      create_time, last_update_user, last_update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{templateId,jdbcType=BIGINT}, 
+      #{brandTemplateId,jdbcType=BIGINT}, #{templateSkodaId,jdbcType=BIGINT}, #{year,jdbcType=VARCHAR}, 
+      #{season,jdbcType=VARCHAR}, #{missionName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{dealerQty,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.Mission">
+    insert into mission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="brandTemplateId != null">
+        brand_template_id,
+      </if>
+      <if test="templateSkodaId != null">
+        template_skoda_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="season != null">
+        season,
+      </if>
+      <if test="missionName != null">
+        mission_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="dealerQty != null">
+        dealer_qty,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="brandTemplateId != null">
+        #{brandTemplateId,jdbcType=BIGINT},
+      </if>
+      <if test="templateSkodaId != null">
+        #{templateSkodaId,jdbcType=BIGINT},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="season != null">
+        #{season,jdbcType=VARCHAR},
+      </if>
+      <if test="missionName != null">
+        #{missionName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="dealerQty != null">
+        #{dealerQty,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.Mission">
+    update mission
+    <set>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="brandTemplateId != null">
+        brand_template_id = #{brandTemplateId,jdbcType=BIGINT},
+      </if>
+      <if test="templateSkodaId != null">
+        template_skoda_id = #{templateSkodaId,jdbcType=BIGINT},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="season != null">
+        season = #{season,jdbcType=VARCHAR},
+      </if>
+      <if test="missionName != null">
+        mission_name = #{missionName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="dealerQty != null">
+        dealer_qty = #{dealerQty,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.Mission">
+    update mission
+    set brand_id = #{brandId,jdbcType=BIGINT},
+      template_id = #{templateId,jdbcType=BIGINT},
+      brand_template_id = #{brandTemplateId,jdbcType=BIGINT},
+      template_skoda_id = #{templateSkodaId,jdbcType=BIGINT},
+      year = #{year,jdbcType=VARCHAR},
+      season = #{season,jdbcType=VARCHAR},
+      mission_name = #{missionName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      dealer_qty = #{dealerQty,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

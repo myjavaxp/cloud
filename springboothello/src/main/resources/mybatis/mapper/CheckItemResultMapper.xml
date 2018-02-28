@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.CheckItemResultMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.CheckItemResult">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="schedual_id" jdbcType="BIGINT" property="schedualId" />
+    <result column="template_content_id" jdbcType="BIGINT" property="templateContentId" />
+    <result column="is_involve" jdbcType="TINYINT" property="isInvolve" />
+    <result column="check_result" jdbcType="TINYINT" property="checkResult" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="first_app_sug" jdbcType="VARCHAR" property="firstAppSug" />
+    <result column="second_app_sug" jdbcType="VARCHAR" property="secondAppSug" />
+    <result column="platform_app_sug" jdbcType="VARCHAR" property="platformAppSug" />
+    <result column="score" jdbcType="DECIMAL" property="score" />
+    <result column="is_no_check" jdbcType="TINYINT" property="isNoCheck" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="dealer_comp" jdbcType="VARCHAR" property="dealerComp" />
+    <result column="rssc_avg_score" jdbcType="DECIMAL" property="rsscAvgScore" />
+    <result column="country_avg_score" jdbcType="DECIMAL" property="countryAvgScore" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, schedual_id, template_content_id, is_involve, check_result, img_url, first_app_sug, 
+    second_app_sug, platform_app_sug, score, is_no_check, description, dealer_comp, rssc_avg_score, 
+    country_avg_score, status, create_user, create_time, last_update_user, last_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_item_result
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from check_item_result
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.CheckItemResult">
+    insert into check_item_result (id, schedual_id, template_content_id, 
+      is_involve, check_result, img_url, 
+      first_app_sug, second_app_sug, platform_app_sug, 
+      score, is_no_check, description, 
+      dealer_comp, rssc_avg_score, country_avg_score, 
+      status, create_user, create_time, 
+      last_update_user, last_update_time)
+    values (#{id,jdbcType=BIGINT}, #{schedualId,jdbcType=BIGINT}, #{templateContentId,jdbcType=BIGINT}, 
+      #{isInvolve,jdbcType=TINYINT}, #{checkResult,jdbcType=TINYINT}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{firstAppSug,jdbcType=VARCHAR}, #{secondAppSug,jdbcType=VARCHAR}, #{platformAppSug,jdbcType=VARCHAR}, 
+      #{score,jdbcType=DECIMAL}, #{isNoCheck,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, 
+      #{dealerComp,jdbcType=VARCHAR}, #{rsscAvgScore,jdbcType=DECIMAL}, #{countryAvgScore,jdbcType=DECIMAL}, 
+      #{status,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateUser,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.CheckItemResult">
+    insert into check_item_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="schedualId != null">
+        schedual_id,
+      </if>
+      <if test="templateContentId != null">
+        template_content_id,
+      </if>
+      <if test="isInvolve != null">
+        is_involve,
+      </if>
+      <if test="checkResult != null">
+        check_result,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="firstAppSug != null">
+        first_app_sug,
+      </if>
+      <if test="secondAppSug != null">
+        second_app_sug,
+      </if>
+      <if test="platformAppSug != null">
+        platform_app_sug,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="isNoCheck != null">
+        is_no_check,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="dealerComp != null">
+        dealer_comp,
+      </if>
+      <if test="rsscAvgScore != null">
+        rssc_avg_score,
+      </if>
+      <if test="countryAvgScore != null">
+        country_avg_score,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="schedualId != null">
+        #{schedualId,jdbcType=BIGINT},
+      </if>
+      <if test="templateContentId != null">
+        #{templateContentId,jdbcType=BIGINT},
+      </if>
+      <if test="isInvolve != null">
+        #{isInvolve,jdbcType=TINYINT},
+      </if>
+      <if test="checkResult != null">
+        #{checkResult,jdbcType=TINYINT},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="firstAppSug != null">
+        #{firstAppSug,jdbcType=VARCHAR},
+      </if>
+      <if test="secondAppSug != null">
+        #{secondAppSug,jdbcType=VARCHAR},
+      </if>
+      <if test="platformAppSug != null">
+        #{platformAppSug,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="isNoCheck != null">
+        #{isNoCheck,jdbcType=TINYINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerComp != null">
+        #{dealerComp,jdbcType=VARCHAR},
+      </if>
+      <if test="rsscAvgScore != null">
+        #{rsscAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="countryAvgScore != null">
+        #{countryAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.CheckItemResult">
+    update check_item_result
+    <set>
+      <if test="schedualId != null">
+        schedual_id = #{schedualId,jdbcType=BIGINT},
+      </if>
+      <if test="templateContentId != null">
+        template_content_id = #{templateContentId,jdbcType=BIGINT},
+      </if>
+      <if test="isInvolve != null">
+        is_involve = #{isInvolve,jdbcType=TINYINT},
+      </if>
+      <if test="checkResult != null">
+        check_result = #{checkResult,jdbcType=TINYINT},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="firstAppSug != null">
+        first_app_sug = #{firstAppSug,jdbcType=VARCHAR},
+      </if>
+      <if test="secondAppSug != null">
+        second_app_sug = #{secondAppSug,jdbcType=VARCHAR},
+      </if>
+      <if test="platformAppSug != null">
+        platform_app_sug = #{platformAppSug,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="isNoCheck != null">
+        is_no_check = #{isNoCheck,jdbcType=TINYINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerComp != null">
+        dealer_comp = #{dealerComp,jdbcType=VARCHAR},
+      </if>
+      <if test="rsscAvgScore != null">
+        rssc_avg_score = #{rsscAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="countryAvgScore != null">
+        country_avg_score = #{countryAvgScore,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.CheckItemResult">
+    update check_item_result
+    set schedual_id = #{schedualId,jdbcType=BIGINT},
+      template_content_id = #{templateContentId,jdbcType=BIGINT},
+      is_involve = #{isInvolve,jdbcType=TINYINT},
+      check_result = #{checkResult,jdbcType=TINYINT},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      first_app_sug = #{firstAppSug,jdbcType=VARCHAR},
+      second_app_sug = #{secondAppSug,jdbcType=VARCHAR},
+      platform_app_sug = #{platformAppSug,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DECIMAL},
+      is_no_check = #{isNoCheck,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      dealer_comp = #{dealerComp,jdbcType=VARCHAR},
+      rssc_avg_score = #{rsscAvgScore,jdbcType=DECIMAL},
+      country_avg_score = #{countryAvgScore,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

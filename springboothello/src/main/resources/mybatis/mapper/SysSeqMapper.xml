@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.SysSeqMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.SysSeq">
+    <id column="seq_name" jdbcType="VARCHAR" property="seqName" />
+    <result column="current_val" jdbcType="BIGINT" property="currentVal" />
+    <result column="increment_val" jdbcType="BIGINT" property="incrementVal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seq_name, current_val, increment_val
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_seq
+    where seq_name = #{seqName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_seq
+    where seq_name = #{seqName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.SysSeq">
+    insert into sys_seq (seq_name, current_val, increment_val
+      )
+    values (#{seqName,jdbcType=VARCHAR}, #{currentVal,jdbcType=BIGINT}, #{incrementVal,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.SysSeq">
+    insert into sys_seq
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seqName != null">
+        seq_name,
+      </if>
+      <if test="currentVal != null">
+        current_val,
+      </if>
+      <if test="incrementVal != null">
+        increment_val,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seqName != null">
+        #{seqName,jdbcType=VARCHAR},
+      </if>
+      <if test="currentVal != null">
+        #{currentVal,jdbcType=BIGINT},
+      </if>
+      <if test="incrementVal != null">
+        #{incrementVal,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.SysSeq">
+    update sys_seq
+    <set>
+      <if test="currentVal != null">
+        current_val = #{currentVal,jdbcType=BIGINT},
+      </if>
+      <if test="incrementVal != null">
+        increment_val = #{incrementVal,jdbcType=BIGINT},
+      </if>
+    </set>
+    where seq_name = #{seqName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.SysSeq">
+    update sys_seq
+    set current_val = #{currentVal,jdbcType=BIGINT},
+      increment_val = #{incrementVal,jdbcType=BIGINT}
+    where seq_name = #{seqName,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.TemplateContentInvolveMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.TemplateContentInvolve">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="template_skoda_id" jdbcType="VARCHAR" property="templateSkodaId" />
+    <result column="template_content_id" jdbcType="BIGINT" property="templateContentId" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="is_involve" jdbcType="TINYINT" property="isInvolve" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, template_skoda_id, template_content_id, weight, is_involve, status, create_user, 
+    create_time, last_update_user, last_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from template_content_involve
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from template_content_involve
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.TemplateContentInvolve">
+    insert into template_content_involve (id, template_skoda_id, template_content_id, 
+      weight, is_involve, status, 
+      create_user, create_time, last_update_user, 
+      last_update_time)
+    values (#{id,jdbcType=BIGINT}, #{templateSkodaId,jdbcType=VARCHAR}, #{templateContentId,jdbcType=BIGINT}, 
+      #{weight,jdbcType=DECIMAL}, #{isInvolve,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.TemplateContentInvolve">
+    insert into template_content_involve
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="templateSkodaId != null">
+        template_skoda_id,
+      </if>
+      <if test="templateContentId != null">
+        template_content_id,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="isInvolve != null">
+        is_involve,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="templateSkodaId != null">
+        #{templateSkodaId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateContentId != null">
+        #{templateContentId,jdbcType=BIGINT},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="isInvolve != null">
+        #{isInvolve,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.TemplateContentInvolve">
+    update template_content_involve
+    <set>
+      <if test="templateSkodaId != null">
+        template_skoda_id = #{templateSkodaId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateContentId != null">
+        template_content_id = #{templateContentId,jdbcType=BIGINT},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="isInvolve != null">
+        is_involve = #{isInvolve,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.TemplateContentInvolve">
+    update template_content_involve
+    set template_skoda_id = #{templateSkodaId,jdbcType=VARCHAR},
+      template_content_id = #{templateContentId,jdbcType=BIGINT},
+      weight = #{weight,jdbcType=DECIMAL},
+      is_involve = #{isInvolve,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

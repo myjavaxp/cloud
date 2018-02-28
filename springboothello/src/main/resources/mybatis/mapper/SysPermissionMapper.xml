@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.SysPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.SysPermission">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="permission_type" jdbcType="TINYINT" property="permissionType" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="permission_key" jdbcType="VARCHAR" property="permissionKey" />
+    <result column="sort_no" jdbcType="TINYINT" property="sortNo" />
+    <result column="parent_id" jdbcType="TINYINT" property="parentId" />
+    <result column="permission_class" jdbcType="VARCHAR" property="permissionClass" />
+    <result column="target_page" jdbcType="VARCHAR" property="targetPage" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, permission_type, url, permission_key, sort_no, parent_id, permission_class, 
+    target_page, description, status, create_user, create_time, last_update_user, last_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permission
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_permission
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.SysPermission">
+    insert into sys_permission (id, code, name, 
+      permission_type, url, permission_key, 
+      sort_no, parent_id, permission_class, 
+      target_page, description, status, 
+      create_user, create_time, last_update_user, 
+      last_update_time)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{permissionType,jdbcType=TINYINT}, #{url,jdbcType=VARCHAR}, #{permissionKey,jdbcType=VARCHAR}, 
+      #{sortNo,jdbcType=TINYINT}, #{parentId,jdbcType=TINYINT}, #{permissionClass,jdbcType=VARCHAR}, 
+      #{targetPage,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.SysPermission">
+    insert into sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="permissionType != null">
+        permission_type,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="permissionKey != null">
+        permission_key,
+      </if>
+      <if test="sortNo != null">
+        sort_no,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="permissionClass != null">
+        permission_class,
+      </if>
+      <if test="targetPage != null">
+        target_page,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionType != null">
+        #{permissionType,jdbcType=TINYINT},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionKey != null">
+        #{permissionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null">
+        #{sortNo,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=TINYINT},
+      </if>
+      <if test="permissionClass != null">
+        #{permissionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPage != null">
+        #{targetPage,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.SysPermission">
+    update sys_permission
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionType != null">
+        permission_type = #{permissionType,jdbcType=TINYINT},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionKey != null">
+        permission_key = #{permissionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null">
+        sort_no = #{sortNo,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=TINYINT},
+      </if>
+      <if test="permissionClass != null">
+        permission_class = #{permissionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPage != null">
+        target_page = #{targetPage,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.SysPermission">
+    update sys_permission
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      permission_type = #{permissionType,jdbcType=TINYINT},
+      url = #{url,jdbcType=VARCHAR},
+      permission_key = #{permissionKey,jdbcType=VARCHAR},
+      sort_no = #{sortNo,jdbcType=TINYINT},
+      parent_id = #{parentId,jdbcType=TINYINT},
+      permission_class = #{permissionClass,jdbcType=VARCHAR},
+      target_page = #{targetPage,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

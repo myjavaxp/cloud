@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yibo.springboothello.dao.TemplateContentMapper">
+  <resultMap id="BaseResultMap" type="com.yibo.springboothello.entity.TemplateContent">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="template_id" jdbcType="BIGINT" property="templateId" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="check_category" jdbcType="VARCHAR" property="checkCategory" />
+    <result column="content_num" jdbcType="VARCHAR" property="contentNum" />
+    <result column="check_content" jdbcType="VARCHAR" property="checkContent" />
+    <result column="item_desc" jdbcType="VARCHAR" property="itemDesc" />
+    <result column="is_touch_upon" jdbcType="TINYINT" property="isTouchUpon" />
+    <result column="is_no_check" jdbcType="TINYINT" property="isNoCheck" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="is_back" jdbcType="TINYINT" property="isBack" />
+    <result column="is_split" jdbcType="TINYINT" property="isSplit" />
+    <result column="sort" jdbcType="TINYINT" property="sort" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, template_id, number, check_category, content_num, check_content, item_desc, is_touch_upon, 
+    is_no_check, parent_id, weight, is_back, is_split, sort, status, create_user, create_time, 
+    last_update_user, last_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from template_content
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from template_content
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yibo.springboothello.entity.TemplateContent">
+    insert into template_content (id, template_id, number, 
+      check_category, content_num, check_content, 
+      item_desc, is_touch_upon, is_no_check, 
+      parent_id, weight, is_back, 
+      is_split, sort, status, 
+      create_user, create_time, last_update_user, 
+      last_update_time)
+    values (#{id,jdbcType=BIGINT}, #{templateId,jdbcType=BIGINT}, #{number,jdbcType=VARCHAR}, 
+      #{checkCategory,jdbcType=VARCHAR}, #{contentNum,jdbcType=VARCHAR}, #{checkContent,jdbcType=VARCHAR}, 
+      #{itemDesc,jdbcType=VARCHAR}, #{isTouchUpon,jdbcType=TINYINT}, #{isNoCheck,jdbcType=TINYINT}, 
+      #{parentId,jdbcType=BIGINT}, #{weight,jdbcType=DECIMAL}, #{isBack,jdbcType=TINYINT}, 
+      #{isSplit,jdbcType=TINYINT}, #{sort,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yibo.springboothello.entity.TemplateContent">
+    insert into template_content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="checkCategory != null">
+        check_category,
+      </if>
+      <if test="contentNum != null">
+        content_num,
+      </if>
+      <if test="checkContent != null">
+        check_content,
+      </if>
+      <if test="itemDesc != null">
+        item_desc,
+      </if>
+      <if test="isTouchUpon != null">
+        is_touch_upon,
+      </if>
+      <if test="isNoCheck != null">
+        is_no_check,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="isBack != null">
+        is_back,
+      </if>
+      <if test="isSplit != null">
+        is_split,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCategory != null">
+        #{checkCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="contentNum != null">
+        #{contentNum,jdbcType=VARCHAR},
+      </if>
+      <if test="checkContent != null">
+        #{checkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null">
+        #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isTouchUpon != null">
+        #{isTouchUpon,jdbcType=TINYINT},
+      </if>
+      <if test="isNoCheck != null">
+        #{isNoCheck,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="isBack != null">
+        #{isBack,jdbcType=TINYINT},
+      </if>
+      <if test="isSplit != null">
+        #{isSplit,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yibo.springboothello.entity.TemplateContent">
+    update template_content
+    <set>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCategory != null">
+        check_category = #{checkCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="contentNum != null">
+        content_num = #{contentNum,jdbcType=VARCHAR},
+      </if>
+      <if test="checkContent != null">
+        check_content = #{checkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null">
+        item_desc = #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isTouchUpon != null">
+        is_touch_upon = #{isTouchUpon,jdbcType=TINYINT},
+      </if>
+      <if test="isNoCheck != null">
+        is_no_check = #{isNoCheck,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="isBack != null">
+        is_back = #{isBack,jdbcType=TINYINT},
+      </if>
+      <if test="isSplit != null">
+        is_split = #{isSplit,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateUser != null">
+        last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yibo.springboothello.entity.TemplateContent">
+    update template_content
+    set template_id = #{templateId,jdbcType=BIGINT},
+      number = #{number,jdbcType=VARCHAR},
+      check_category = #{checkCategory,jdbcType=VARCHAR},
+      content_num = #{contentNum,jdbcType=VARCHAR},
+      check_content = #{checkContent,jdbcType=VARCHAR},
+      item_desc = #{itemDesc,jdbcType=VARCHAR},
+      is_touch_upon = #{isTouchUpon,jdbcType=TINYINT},
+      is_no_check = #{isNoCheck,jdbcType=TINYINT},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      weight = #{weight,jdbcType=DECIMAL},
+      is_back = #{isBack,jdbcType=TINYINT},
+      is_split = #{isSplit,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_user = #{lastUpdateUser,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
