@@ -1,6 +1,7 @@
 package com.yibo.ribbonconsumer.controller;
 
 import com.yibo.ribbonconsumer.entity.Mission;
+import com.yibo.ribbonconsumer.service.HelloService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -13,10 +14,12 @@ import java.net.URI;
 public class ConsumerController {
     @Resource
     private RestTemplate restTemplate;
+    @Resource
+    private HelloService helloService;
 
     @RequestMapping(value = "/ribbon-consumer", method = RequestMethod.GET)
     public String helloConsumer() {
-        return restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
+        return helloService.helloService();
     }
 
     @RequestMapping(value = "/addMission", method = RequestMethod.POST)

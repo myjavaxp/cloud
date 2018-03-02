@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Random;
 
 @RestController
 public class HelloController {
@@ -17,7 +18,10 @@ public class HelloController {
     private EurekaRegistration eurekaRegistration;
 
     @RequestMapping("/hello")
-    public String index() {
+    public String index() throws InterruptedException {
+        int sleepTime=new Random().nextInt(4000);
+        logger.info("sleepTime:"+sleepTime);
+        Thread.sleep(sleepTime);
         logger.info("/hello,host:" + eurekaRegistration.getHost() + ",service_id:" + eurekaRegistration.getServiceId() + ",uri:" + eurekaRegistration.getUri());
         counterService.increment("hello.count");
         return "Hello World";
