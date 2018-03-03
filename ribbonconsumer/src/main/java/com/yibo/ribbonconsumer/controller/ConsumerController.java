@@ -24,17 +24,17 @@ public class ConsumerController {
 
     @RequestMapping(value = "/addMission", method = RequestMethod.POST)
     public String addMission(@RequestBody Mission mission) {
-        return restTemplate.postForEntity("http://HELLO-SERVICE/mission/post", mission, String.class).getBody();
+        return restTemplate.postForEntity("http://HELLO-SERVICE/mission", mission, String.class).getBody();
     }
 
     @RequestMapping(value = "/getMission", method = RequestMethod.GET)
     public String getMission(@RequestParam("id") Long id) {
-        return restTemplate.getForEntity("http://HELLO-SERVICE/mission/get?id={1}", String.class, id).getBody();
+        return restTemplate.getForEntity("http://HELLO-SERVICE/mission/{1}", String.class, id).getBody();
     }
 
     @RequestMapping(value = "/getMyMission", method = RequestMethod.GET)
     public String getMyMission(@RequestParam("id") Long id) {
-        UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://HELLO-SERVICE/mission/get?id={id}")
+        UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://HELLO-SERVICE/mission/{id}")
                 .build()
                 .expand(id)
                 .encode();

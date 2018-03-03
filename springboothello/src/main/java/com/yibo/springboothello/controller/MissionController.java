@@ -12,20 +12,40 @@ public class MissionController {
     @Resource
     private MissionService missionService;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam("id") Long id) {
+    @GetMapping("/{id}")
+    public Object findById(@PathVariable Long id){
         try {
             return missionService.getMission(id);
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             return e.getMessage();
         }
     }
-    @RequestMapping(value = "/post",method = RequestMethod.POST)
-    public Object post(@RequestBody Mission mission){
+    @PostMapping
+    public Object addMission(@RequestBody Mission mission){
         try {
             missionService.addMission(mission);
-            return "新增任务成功";
+            return "任务新增成功";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+    @PutMapping("/{id}")
+    public Object updateMission(@RequestBody Mission mission,@PathVariable Long id){
+        try {
+            missionService.updateMission(mission,id);
+            return "任务修改成功";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+    @DeleteMapping("/{id}")
+    public Object deleteMission(@PathVariable Long id){
+        try {
+            missionService.deleteMission(id);
+            return "任务删除成功";
         }catch (Exception e){
             e.printStackTrace();
             return e.getMessage();

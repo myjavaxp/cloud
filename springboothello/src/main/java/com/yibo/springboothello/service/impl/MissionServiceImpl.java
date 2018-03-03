@@ -25,4 +25,15 @@ public class MissionServiceImpl implements MissionService {
     public void addMission(Mission mission){
         missionMapper.insertSelective(mission);
     }
+
+    @Override
+    public void updateMission(Mission mission,Long id){
+        Assert.notNull(mission.getId(),"任务ID不能为空！");
+        Assert.isTrue(mission.getId().equals(id),"任务ID不匹配！");
+        missionMapper.updateByPrimaryKeySelective(mission);
+    }
+    @Override
+    public void deleteMission(Long id){
+        missionMapper.deleteByPrimaryKey(id);
+    }
 }

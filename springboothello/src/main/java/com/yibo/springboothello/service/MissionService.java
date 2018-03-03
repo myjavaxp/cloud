@@ -6,4 +6,8 @@ public interface MissionService {
     Mission getMission(Long id);
 
     void addMission(Mission mission);
+
+    void updateMission(Mission mission,Long id);
+
+    void deleteMission(Long id);
 }
