@@ -13,3 +13,9 @@ eureka:
 spring:
   application:
     name: eureka-server
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root

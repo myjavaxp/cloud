@@ -3,7 +3,7 @@ package com.yibo.springboothello.controller;
 import org.apache.log4j.Logger;
 import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -17,7 +17,7 @@ public class HelloController {
     @Resource
     private EurekaRegistration eurekaRegistration;
 
-    @RequestMapping("/hello")
+    @GetMapping("/hello")
     public String index() throws InterruptedException {
         int sleepTime=new Random().nextInt(4000);
         logger.info("sleepTime:"+sleepTime);
