@@ -2,6 +2,10 @@ package com.yibo.ribbonconsumer.controller;
 
 import com.yibo.ribbonconsumer.entity.Mission;
 import com.yibo.ribbonconsumer.service.HelloService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -16,6 +20,9 @@ public class ConsumerController {
     private RestTemplate restTemplate;
     @Resource
     private HelloService helloService;
+    @Resource
+    private LoadBalancerClient loadBalancerClient;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerController.class);
 
     @RequestMapping(value = "/ribbon-consumer", method = RequestMethod.GET)
     public String helloConsumer() {
@@ -40,5 +47,12 @@ public class ConsumerController {
                 .encode();
         URI uri = uriComponents.toUri();
         return restTemplate.getForEntity(uri, String.class).getBody();
+    }
+
+    @GetMapping("/log-instance")
+    public String logUserInstance() {
+        ServiceInstance serviceInstance = loadBalancerClient.choose("HELLO-SERVICE");
+        LOGGER.info("{},{},{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
+        return serviceInstance.getServiceId() + serviceInstance.getHost() + serviceInstance.getPort();
     }
 }
