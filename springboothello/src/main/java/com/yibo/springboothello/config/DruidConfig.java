@@ -22,7 +22,7 @@ public class DruidConfig {
     private String username;
 
     @Value("${spring.datasource.url}")
-    private String dbUrl;
+    private String url;
 
     @Value("${spring.datasource.password}")
     private String password;
@@ -68,13 +68,13 @@ public class DruidConfig {
 
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
-        ServletRegistrationBean reg = new ServletRegistrationBean();
-        reg.setServlet(new StatViewServlet());
-        reg.addUrlMappings("/druid/*");
-        reg.addInitParameter("loginUsername", username);
-        reg.addInitParameter("loginPassword", password);
-        reg.addInitParameter("logSlowSql", logSlowSql);
-        return reg;
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
+        servletRegistrationBean.setServlet(new StatViewServlet());
+        servletRegistrationBean.addUrlMappings("/druid/*");
+        servletRegistrationBean.addInitParameter("loginUsername", username);
+        servletRegistrationBean.addInitParameter("loginPassword", password);
+        servletRegistrationBean.addInitParameter("logSlowSql", logSlowSql);
+        return servletRegistrationBean;
     }
 
     @Bean
@@ -91,7 +91,7 @@ public class DruidConfig {
     @Primary
     public DataSource dataSource() {
         DruidDataSource datasource = new DruidDataSource();
-        datasource.setUrl(dbUrl);
+        datasource.setUrl(url);
         datasource.setUsername(username);
         datasource.setPassword(password);
         datasource.setDriverClassName(driverClassName);
