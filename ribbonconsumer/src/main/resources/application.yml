@@ -10,3 +10,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://root:root@localhost:1111/eureka/
+logging:
+  level:
+    com.yibo.ribbonconsumer.feign.MissionFeignClient: DEBUG
