@@ -12,7 +12,8 @@
 		<module>eurekaserver</module>
         <module>feignmanual</module>
         <module>bean</module>
-    </modules>
+		<module>hystrixdashboard</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>cloud</name>
