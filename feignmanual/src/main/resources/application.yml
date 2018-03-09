@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: feign-manual
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+server:
+  port: 9001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:1111/eureka/

@@ -1,6 +1,7 @@
 package com.yibo.ribbonconsumer.controller;
 
 import com.yibo.ribbonconsumer.entity.Mission;
+import com.yibo.ribbonconsumer.feign.MissionFeignClient;
 import com.yibo.ribbonconsumer.service.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,8 @@ public class ConsumerController {
     private HelloService helloService;
     @Resource
     private LoadBalancerClient loadBalancerClient;
+    @Resource
+    private MissionFeignClient missionFeignClient;
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerController.class);
 
     @RequestMapping(value = "/ribbon-consumer", method = RequestMethod.GET)
@@ -54,5 +57,10 @@ public class ConsumerController {
         ServiceInstance serviceInstance = loadBalancerClient.choose("HELLO-SERVICE");
         LOGGER.info("{},{},{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
         return serviceInstance.getServiceId() + serviceInstance.getHost() + serviceInstance.getPort();
+    }
+
+    @GetMapping("/mission/{id}")
+    public Object findById(@PathVariable("id") Long id) {
+        return missionFeignClient.findById(id);
     }
 }

@@ -10,7 +10,8 @@
 		<module>springboothello</module>
 		<module>ribbonconsumer</module>
 		<module>eurekaserver</module>
-	</modules>
+        <module>feignmanual</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>cloud</name>
