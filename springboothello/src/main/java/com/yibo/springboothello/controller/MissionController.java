@@ -12,13 +12,8 @@ public class MissionController {
     private MissionService missionService;
 
     @GetMapping("/{id}")
-    public Object findById(@PathVariable Long id) {
-        try {
-            return missionService.getMission(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return e.getMessage();
-        }
+    public Mission findById(@PathVariable Long id) {
+        return missionService.getMission(id);
     }
 
     @PostMapping

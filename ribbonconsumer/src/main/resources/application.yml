@@ -13,3 +13,6 @@ eureka:
 logging:
   level:
     com.yibo.ribbonconsumer.feign.MissionFeignClient: DEBUG
+feign:
+  hystrix:
+    enabled: true
