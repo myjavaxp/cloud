@@ -11,6 +11,7 @@
 		<module>ribbonconsumer</module>
 		<module>eurekaserver</module>
         <module>feignmanual</module>
+        <module>bean</module>
     </modules>
 	<packaging>pom</packaging>
 

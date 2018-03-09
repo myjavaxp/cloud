@@ -1,8 +1,8 @@
 package com.yibo.ribbonconsumer.controller;
 
-import com.yibo.ribbonconsumer.entity.Mission;
 import com.yibo.ribbonconsumer.feign.MissionFeignClient;
 import com.yibo.ribbonconsumer.service.HelloService;
+import com.yibo.springboothello.entity.Mission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
