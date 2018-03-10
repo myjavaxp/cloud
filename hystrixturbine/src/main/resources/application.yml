@@ -1,0 +1,12 @@
+server:
+  port: 8031
+spring:
+  application:
+    name: hystrix-turbine
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:1111/eureka/
+turbine:
+  app-config: ribbon-consumer
+  cluster-name-expression: "'default'"

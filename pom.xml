@@ -13,6 +13,8 @@
         <module>feignmanual</module>
         <module>bean</module>
 		<module>hystrixdashboard</module>
+		<module>hystrixturbine</module>
+		<module>gatewayzuul</module>
 	</modules>
 	<packaging>pom</packaging>
 
