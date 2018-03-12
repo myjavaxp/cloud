@@ -1,6 +1,6 @@
 package com.yibo.feignmanual.feign;
 
-import com.yibo.feignmanual.entity.SysUser;
+import com.yibo.springboothello.entity.SysUser;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

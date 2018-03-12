@@ -1,7 +1,7 @@
 package com.yibo.feignmanual.controller;
 
-import com.yibo.feignmanual.entity.SysUser;
 import com.yibo.feignmanual.feign.UserFeignClient;
+import com.yibo.springboothello.entity.SysUser;
 import feign.Client;
 import feign.Contract;
 import feign.Feign;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieController {
     private UserFeignClient userUserFeignClient;
     private UserFeignClient adminUserFeignClient;
+
     @Autowired
     public MovieController(Decoder decoder, Encoder encoder, Client client, Contract contract) {
         this.userUserFeignClient = Feign.builder().client(client)
