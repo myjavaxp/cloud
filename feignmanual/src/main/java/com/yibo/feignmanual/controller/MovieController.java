@@ -22,7 +22,8 @@ public class MovieController {
 
     @Autowired
     public MovieController(Decoder decoder, Encoder encoder, Client client, Contract contract) {
-        this.userUserFeignClient = Feign.builder().client(client)
+        this.userUserFeignClient = Feign.builder()
+                .client(client)
                 .encoder(encoder)
                 .decoder(decoder)
                 .contract(contract)

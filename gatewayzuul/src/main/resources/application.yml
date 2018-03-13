@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: gateway-zuul
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
 eureka:
   client:
     service-url:
@@ -10,9 +13,6 @@ eureka:
 management:
   security:
     enabled: false
-logging:
-  level:
-    com.netflix: debug
 zuul:
   routes:
     ribbon-consumer: /hello/**
