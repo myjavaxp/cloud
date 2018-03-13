@@ -16,3 +16,6 @@ management:
 zuul:
   routes:
     ribbon-consumer: /hello/**
+  host:
+    connect-timeout-millis: 10000000
+    socket-timeout-millis: 60000000
