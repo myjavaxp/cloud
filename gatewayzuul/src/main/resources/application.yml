@@ -13,3 +13,6 @@ management:
 logging:
   level:
     com.netflix: debug
+zuul:
+  routes:
+    ribbon-consumer: /hello/**

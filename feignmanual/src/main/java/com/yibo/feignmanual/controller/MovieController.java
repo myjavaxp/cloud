@@ -5,7 +5,6 @@ import com.yibo.springboothello.entity.SysUser;
 import feign.Client;
 import feign.Contract;
 import feign.Feign;
-import feign.auth.BasicAuthRequestInterceptor;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +26,12 @@ public class MovieController {
                 .encoder(encoder)
                 .decoder(decoder)
                 .contract(contract)
-                .requestInterceptor(new BasicAuthRequestInterceptor("user", "password"))
                 .target(UserFeignClient.class, "http://hello-service");
         this.adminUserFeignClient = Feign.builder()
                 .client(client)
                 .encoder(encoder)
                 .decoder(decoder)
                 .contract(contract)
-                .requestInterceptor(new BasicAuthRequestInterceptor("admin", "password"))
                 .target(UserFeignClient.class, "http://hello-service");
     }
 

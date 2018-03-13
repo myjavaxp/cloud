@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(name = "hello-service", fallbackFactory = FeignClientFallbackFactory.class)
 public interface UserFeignClient {
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/mission/{id}", method = RequestMethod.GET)
     Mission findById(@PathVariable("id") Long id);
 }
