@@ -2,6 +2,7 @@ package com.yibo.ribbonconsumer.controller;
 
 import com.yibo.ribbonconsumer.service.HelloService;
 import com.yibo.springboothello.entity.Mission;
+import com.yibo.springboothello.entity.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -54,5 +55,9 @@ public class ConsumerController {
         ServiceInstance serviceInstance = loadBalancerClient.choose("HELLO-SERVICE");
         LOGGER.info("{},{},{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
         return serviceInstance.getServiceId() + serviceInstance.getHost() + serviceInstance.getPort();
+    }
+    @GetMapping("/users/{id}")
+    public SysUser sysUser(@PathVariable("id") Long id){
+        return restTemplate.getForObject("http://HELLO-SERVICE/users/{1}", SysUser.class, id);
     }
 }

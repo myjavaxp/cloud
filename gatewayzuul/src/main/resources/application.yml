@@ -17,5 +17,11 @@ zuul:
   routes:
     ribbon-consumer: /hello/**
   host:
-    connect-timeout-millis: 10000000
-    socket-timeout-millis: 60000000
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  PreRequestLogFilter:
+    pre:
+      disable: false
+sidecar:
+  health-uri: http://localhost:8060/health.json
+  port: 8060
