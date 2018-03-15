@@ -14,6 +14,7 @@ public class FeignClientFallBack implements MissionFeignClient{
         LOGGER.info("回退成功");
         Mission mission=new Mission();
         mission.setMissionName("默认任务");
+        mission.setCreateUser("system");
         mission.setId(-1L);
         return mission;
     }
