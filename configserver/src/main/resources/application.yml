@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/myspringgo/spring-cloud-config-repo.git
+          username: 2354685419@qq.com
+          password: Mhw-Y77-LuN-Jod
