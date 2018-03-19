@@ -1,6 +1,6 @@
 package com.yibo.springboothello.controller;
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import java.util.Random;
 
 @RestController
 public class HelloController {
-    private final Logger logger = Logger.getLogger(getClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
     @Resource
     private CounterService counterService;
     @Resource
@@ -20,9 +20,9 @@ public class HelloController {
     @GetMapping("/hello")
     public String index() throws InterruptedException {
         int sleepTime=new Random().nextInt(4000);
-        logger.info("sleepTime:"+sleepTime);
+        LOGGER.info("sleepTime:"+sleepTime);
         Thread.sleep(sleepTime);
-        logger.info("/hello,host:" + eurekaRegistration.getHost() + ",service_id:" + eurekaRegistration.getServiceId() + ",uri:" + eurekaRegistration.getUri());
+        LOGGER.info("/hello,host:" + eurekaRegistration.getHost() + ",service_id:" + eurekaRegistration.getServiceId() + ",uri:" + eurekaRegistration.getUri());
         counterService.increment("hello.count");
         return "Hello World";
     }

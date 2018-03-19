@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 @Configuration
 public class DruidConfig {
-    private Logger logger = LoggerFactory.getLogger(DruidConfig.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DruidConfig.class);
     @Value("${spring.datasource.username}")
     private String username;
 
@@ -108,7 +108,7 @@ public class DruidConfig {
         try {
             datasource.setFilters(filters);
         } catch (SQLException e) {
-            logger.error("druid configuration initialization filter", e);
+            LOGGER.error("druid configuration initialization filter", e);
         }
         return datasource;
     }
