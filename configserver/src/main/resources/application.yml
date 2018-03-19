@@ -10,3 +10,4 @@ spring:
           uri: https://gitee.com/myspringgo/spring-cloud-config-repo
           username: 2354685419@qq.com
           password: Mhw-Y77-LuN-Jod
+          clone-on-start: true

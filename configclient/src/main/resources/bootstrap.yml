@@ -7,3 +7,6 @@ spring:
       uri: http://localhost:8888/
       profile: dev
       label: master
+management:
+  security:
+    enabled: false
