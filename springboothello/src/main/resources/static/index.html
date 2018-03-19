@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+Spring Cloud首页
+<br/>
+<form>
+    <input type="text" id="missionId" title="ID"/>
+</form>
+<button onclick="getUser()">点我</button>
+<br/>
+<div id="1"></div>
+</body>
+<script type="text/javascript">
+    function getUser() {
+        var missionId = document.getElementById("missionId").value;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", "mission/" + missionId, true);
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                var str = xmlHttp.responseText;
+                var misson = JSON.parse(str);
+                document.getElementById("1").innerHTML = misson.missionName;
+            } else {
+                var error = JSON.parse(xmlHttp.responseText);
+                document.getElementById("1").innerHTML = error.message;
+            }
+        };
+        xmlHttp.send();
+    }
+</script>
+</html>

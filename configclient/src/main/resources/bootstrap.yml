@@ -1,5 +1,6 @@
 spring:
   application:
+    #对应server所获取的配置文件的{application}
     name: foo
   cloud:
     config:
