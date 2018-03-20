@@ -27,8 +27,10 @@ public class DruidConfig {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
         servletRegistrationBean.setServlet(new StatViewServlet());
         servletRegistrationBean.addUrlMappings("/druid/*");
+        servletRegistrationBean.addInitParameter("resetEnable","false");
         servletRegistrationBean.addInitParameter("loginUsername", username);
         servletRegistrationBean.addInitParameter("loginPassword", password);
+        //servletRegistrationBean.addInitParameter("allow","127.0.0.1");
         return servletRegistrationBean;
     }
 
