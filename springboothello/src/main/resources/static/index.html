@@ -16,16 +16,16 @@ Spring Cloud首页
 </body>
 <script type="text/javascript">
     function getUser() {
-        var missionId = document.getElementById("missionId").value;
-        var xmlHttp = new XMLHttpRequest();
+        let missionId = document.getElementById("missionId").value;
+        let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", "mission/" + missionId, true);
         xmlHttp.onreadystatechange = function () {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-                var str = xmlHttp.responseText;
-                var misson = JSON.parse(str);
+                let str = xmlHttp.responseText;
+                let misson = JSON.parse(str);
                 document.getElementById("1").innerHTML = misson.missionName;
             } else {
-                var error = JSON.parse(xmlHttp.responseText);
+                let error = JSON.parse(xmlHttp.responseText);
                 document.getElementById("1").innerHTML = error.message;
             }
         };
