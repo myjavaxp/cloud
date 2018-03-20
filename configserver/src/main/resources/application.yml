@@ -11,3 +11,12 @@ spring:
           username: 2354685419@qq.com
           password: Mhw-Y77-LuN-Jod
           clone-on-start: true
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    username: guest
+    password: guest
+management:
+  security:
+    enabled: false
