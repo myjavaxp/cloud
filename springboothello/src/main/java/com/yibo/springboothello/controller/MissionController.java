@@ -18,35 +18,20 @@ public class MissionController {
     }
 
     @PostMapping
-    public Object addMission(@RequestBody Mission mission) {
-        try {
-            missionService.addMission(mission);
-            return "任务新增成功";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return e.getMessage();
-        }
+    public String addMission(@RequestBody Mission mission) {
+        missionService.addMission(mission);
+        return "任务新增成功";
     }
 
-    @PutMapping("/{id}")
-    public Object updateMission(@RequestBody Mission mission, @PathVariable Long id) {
-        try {
-            missionService.updateMission(mission, id);
-            return "任务修改成功";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return e.getMessage();
-        }
+    @PatchMapping("/{id}")
+    public String updateMission(@RequestBody Mission mission, @PathVariable Long id) {
+        missionService.updateMission(mission, id);
+        return "任务修改成功";
     }
 
     @DeleteMapping("/{id}")
-    public Object deleteMission(@PathVariable Long id) {
-        try {
-            missionService.deleteMission(id);
-            return "任务删除成功";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return e.getMessage();
-        }
+    public String deleteMission(@PathVariable Long id) {
+        missionService.deleteMission(id);
+        return "任务删除成功";
     }
 }

@@ -8,14 +8,20 @@
 Spring Cloud首页
 <br/>
 <form>
-    <input type="text" id="missionId" title="ID"/>
+    任务ID<input type="text" id="missionId" title="ID"/>
+    任务名<input type="text" id="missionName" title="name"/>
+    品牌ID<input type="text" id="brandId" title="brandId"/>
+    问卷ID<input type="text" id="templateId" title="templateId"/>
 </form>
-<button onclick="getUser()">点我</button>
+<button onclick="getMission()">查询任务名</button>
+<button onclick="addMission()">新增任务</button>
+<button onclick="updateMission()">修改任务</button>
+<button onclick="deleteMission()">删除任务</button>
 <br/>
 <div id="1"></div>
 </body>
 <script type="text/javascript">
-    function getUser() {
+    function getMission() {
         let missionId = document.getElementById("missionId").value;
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", "mission/" + missionId, true);
@@ -24,6 +30,64 @@ Spring Cloud首页
                 let str = xmlHttp.responseText;
                 let misson = JSON.parse(str);
                 document.getElementById("1").innerHTML = misson.missionName;
+            } else {
+                let error = JSON.parse(xmlHttp.responseText);
+                document.getElementById("1").innerHTML = error.message;
+            }
+        };
+        xmlHttp.send();
+    }
+
+    function addMission() {
+        let mission = {
+            "missionName": document.getElementById("missionName").value,
+            "brandId": document.getElementById("brandId").value,
+            "templateId": document.getElementById("templateId").value
+        };
+        let data = JSON.stringify(mission);
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("POST", "mission", true);
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                document.getElementById("1").innerHTML = xmlHttp.responseText;
+            } else {
+                let error = JSON.parse(xmlHttp.responseText);
+                document.getElementById("1").innerHTML = error.message;
+            }
+        };
+        xmlHttp.send(data);
+    }
+
+    function updateMission() {
+        let mission = {
+            "id": document.getElementById("missionId").value,
+            "missionName": document.getElementById("missionName").value,
+            "brandId": document.getElementById("brandId").value,
+            "templateId": document.getElementById("templateId").value
+        };
+        let data = JSON.stringify(mission);
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("PATCH", "mission/" + mission.id, true);
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                document.getElementById("1").innerHTML = xmlHttp.responseText;
+            } else {
+                let error = JSON.parse(xmlHttp.responseText);
+                document.getElementById("1").innerHTML = error.message;
+            }
+        };
+        xmlHttp.send(data);
+    }
+
+    function deleteMission() {
+        let missionId = document.getElementById("missionId").value;
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("DELETE", "mission/" + missionId, true);
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                document.getElementById("1").innerHTML = xmlHttp.responseText;
             } else {
                 let error = JSON.parse(xmlHttp.responseText);
                 document.getElementById("1").innerHTML = error.message;

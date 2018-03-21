@@ -15,15 +15,10 @@ import java.io.IOException;
 public class FileUploadController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public String handleFileUpload(@RequestParam("file") MultipartFile file) {
-        try {
-            byte[] bytes = file.getBytes();
-            File fileToSave = new File(file.getOriginalFilename());
-            FileCopyUtils.copy(bytes, fileToSave);
-            return fileToSave.getAbsolutePath();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return e.getMessage();
-        }
+    public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+        byte[] bytes = file.getBytes();
+        File fileToSave = new File(file.getOriginalFilename());
+        FileCopyUtils.copy(bytes, fileToSave);
+        return fileToSave.getAbsolutePath();
     }
 }
