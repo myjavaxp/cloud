@@ -9,7 +9,8 @@ eureka:
       defaultZone: http://root:root@localhost:1111/eureka/
 logging:
   level:
-    com.yibo.ribbonconsumer.feign.MissionFeignClient: DEBUG
+    com.yibo.ribbonconsumer.feign.MissionFeignClient: debug
+    org.springframework.web.servlet.DispatcherServlet: debug
 feign:
   hystrix:
     enabled: true
