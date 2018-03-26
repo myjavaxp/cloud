@@ -12,7 +12,7 @@ public class ConfigClientController {
     private String profile;
 
     @GetMapping("/profile")
-    public String hello() {
+    public String getProfile() {
         return this.profile;
     }
 }
