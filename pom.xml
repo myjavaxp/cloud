@@ -38,6 +38,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skipTests>true</skipTests>
         <spring-cloud.version>Edgware.SR2</spring-cloud.version>
+        <zipkin.version>2.6.1</zipkin.version>
     </properties>
     <dependencyManagement>
         <dependencies>

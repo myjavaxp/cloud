@@ -29,7 +29,7 @@ public class HelloController {
         return "Hello World";
     }
 
-    @GetMapping("trace-2")
+    @GetMapping("/trace-2")
     public String trace(HttpServletRequest request) {
         LOGGER.info("===<call trace-2, TraceId={},SpanId={}>===",
                 request.getHeader("X-B3-TraceId"),
