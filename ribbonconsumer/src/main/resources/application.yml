@@ -12,10 +12,8 @@ feign:
   hystrix:
     enabled: true
 spring:
-  application:
-    name: ribbon-consumer
   sleuth:
     sampler:
       percentage: 1
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://localhost:9411
