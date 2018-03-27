@@ -12,22 +12,15 @@ import org.springframework.context.annotation.Configuration;
 public class DruidConfig {
     @Value("${spring.datasource.username}")
     private String username;
-
-    @Value("${spring.datasource.url}")
-    private String url;
-
     @Value("${spring.datasource.password}")
     private String password;
-
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
 
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
         servletRegistrationBean.setServlet(new StatViewServlet());
         servletRegistrationBean.addUrlMappings("/druid/*");
-        servletRegistrationBean.addInitParameter("resetEnable","false");
+        servletRegistrationBean.addInitParameter("resetEnable", "false");
         servletRegistrationBean.addInitParameter("loginUsername", username);
         servletRegistrationBean.addInitParameter("loginPassword", password);
         //servletRegistrationBean.addInitParameter("allow","127.0.0.1");

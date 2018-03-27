@@ -56,8 +56,15 @@ public class ConsumerController {
         LOGGER.info("{},{},{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
         return serviceInstance.getServiceId() + serviceInstance.getHost() + serviceInstance.getPort();
     }
+
     @GetMapping("/users/{id}")
-    public SysUser sysUser(@PathVariable("id") Long id){
+    public SysUser sysUser(@PathVariable("id") Long id) {
         return restTemplate.getForObject("http://HELLO-SERVICE/users/{1}", SysUser.class, id);
+    }
+
+    @GetMapping("/trace-1")
+    public String trace() {
+        LOGGER.info("===<call trace-1>==");
+        return restTemplate.getForEntity("http://HELLO-SERVICE/trace-2", String.class).getBody();
     }
 }
