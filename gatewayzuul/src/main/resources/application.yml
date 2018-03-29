@@ -21,7 +21,8 @@ management:
     enabled: false
 zuul:
   routes:
-    ribbon-consumer: /hello/**
+    ribbon-consumer: /a/**
+    hello-service: /b/**
   host:
     connect-timeout-millis: 10000
     socket-timeout-millis: 60000
