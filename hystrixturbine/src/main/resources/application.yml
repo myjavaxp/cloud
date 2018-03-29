@@ -3,10 +3,12 @@ server:
 spring:
   application:
     name: hystrix-turbine
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
       defaultZone: http://root:root@localhost:1111/eureka/
-turbine:
-  app-config: ribbon-consumer
-  cluster-name-expression: "'default'"
