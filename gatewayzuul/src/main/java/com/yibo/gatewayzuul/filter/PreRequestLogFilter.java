@@ -8,7 +8,8 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 
 public class PreRequestLogFilter extends ZuulFilter {
-    private static final Logger LOGGER= LoggerFactory.getLogger(PreRequestLogFilter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PreRequestLogFilter.class);
+
     @Override
     public String filterType() {
         return "pre";
@@ -26,9 +27,9 @@ public class PreRequestLogFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        RequestContext requestContext=RequestContext.getCurrentContext();
-        HttpServletRequest request=requestContext.getRequest();
-        LOGGER.info(String.format("send %s request to %s",request.getMethod(),request.getRequestURL().toString()));
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
+        LOGGER.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
         return null;
     }
 }
