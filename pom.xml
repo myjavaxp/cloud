@@ -37,7 +37,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skipTests>true</skipTests>
-        <spring-cloud.version>Edgware.SR2</spring-cloud.version>
+        <spring-cloud.version>Edgware.SR3</spring-cloud.version>
     </properties>
     <dependencyManagement>
         <dependencies>
