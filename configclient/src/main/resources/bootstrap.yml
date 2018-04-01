@@ -5,8 +5,8 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888/
-      profile: dev
-      label: master
+      profile: test
+      label: config-v2.0
   rabbitmq:
     host: localhost
     port: 5672

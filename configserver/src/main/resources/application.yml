@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://gitee.com/myspringgo/spring-cloud-config-repo
           username: 2354685419@qq.com
-          password: Mhw-Y77-LuN-Jod
+          password: '{cipher}AQCP5w6xr8cHCkL7HRm1suSwuFovqwpex3Z+qbF5qr2m3iSuERKzVz50piEXGOGkoNNR4v1x1uag4/cba+SsWzBS8nLraqZq/j4qzrxp9sIl23FJhYSv0JG6nER2ph6wArKVdjqri0EBOMD6MsI0g/KejpKabNx3gITkGj1ESVBuN9+kZX2Hyy31dLearFEgHJjucq2/gp7w1sgbylyKbMHA+qDBL9HU7ADmgFANkuo9PkhRLxNLZqdIjhEmq2fyJu7075JPkAhJf0E4ebEMhkiqqOfN4Ac/WNc74yRyWhN5foyUJQMtUBEr3Kn7LHv4GCB9ObkGlsct62hQ3lmtiRE4Ko5rc5z2+8FHE36msE8oUng/oJoPieotC2URIiynmYI='
           clone-on-start: true
     bus:
       trace:

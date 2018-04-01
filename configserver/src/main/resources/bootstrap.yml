@@ -1,0 +1,10 @@
+encrypt:
+  key-store:
+    location: classpath:/config-server.keystore
+    alias: config-server
+    password: 123456
+    secret: 123456
+  rsa:
+    algorithm: default
+    salt: yibo
+    strong: false
