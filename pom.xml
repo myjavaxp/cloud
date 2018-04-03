@@ -18,6 +18,7 @@
         <module>configserver</module>
         <module>configclient</module>
         <module>zipkinserver</module>
+        <module>service-provider</module>
     </modules>
     <packaging>pom</packaging>
 
