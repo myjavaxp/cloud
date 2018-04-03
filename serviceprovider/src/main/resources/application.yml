@@ -26,4 +26,3 @@ spring:
       filter:
         slf4j:
           enabled: true
-      aop-patterns: com.yibo.serviceprovider.dao.*
