@@ -29,3 +29,7 @@ spring:
       filter:
         slf4j:
           enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:1111/eureka/
