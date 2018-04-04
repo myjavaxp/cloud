@@ -11,15 +11,15 @@ import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class DealerRepositoryTest {
+public class DealerDaoTest {
     @Resource
-    private DealerRepository dealerRepository;
+    private DealerDao dealerDao;
 
     @Test
     public void testDealer() {
-        List<Dealer> dealerList = dealerRepository.findByProvinceContainingAndCityContaining("黑", "哈");
+        List<Dealer> dealerList = dealerDao.findByProvinceContainingAndCityContaining("黑", "哈");
         dealerList.forEach(System.out::println);
         System.out.println("------");
-        dealerRepository.findByIdLessThan(100L).forEach(System.out::println);
+        dealerDao.findByIdLessThan(100L).forEach(System.out::println);
     }
 }

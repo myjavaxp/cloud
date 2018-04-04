@@ -5,6 +5,9 @@ spring:
     name: service-provider
   jpa:
     show-sql: true
+    properties:
+      hibernate:
+       format_sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/vw?characterEncoding=UTF-8&useSSL=false
     username: root

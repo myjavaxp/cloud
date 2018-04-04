@@ -1,6 +1,6 @@
 package com.yibo.serviceprovider.controller;
 
-import com.yibo.serviceprovider.dao.DealerRepository;
+import com.yibo.serviceprovider.dao.DealerDao;
 import com.yibo.serviceprovider.entity.Dealer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,20 +14,20 @@ import java.util.Map;
 @RequestMapping("/dealers")
 public class DealerController {
     @Resource
-    private DealerRepository dealerRepository;
+    private DealerDao dealerDao;
 
     @GetMapping
     public List<Dealer> getDealers() {
-        return dealerRepository.findAll();
+        return dealerDao.findAll();
     }
 
     @GetMapping("/{page}/{size}")
     public Page<Dealer> getDealersInPage(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
-        return dealerRepository.findAll(new PageRequest(page, size));
+        return dealerDao.findAll(new PageRequest(page, size));
     }
 
     @PostMapping("/query")
     public List<Dealer> getDealer(@RequestBody Map<String, String> map) {
-        return dealerRepository.findByProvinceContainingAndCityContaining(map.get("province"), map.get("city"));
+        return dealerDao.findByProvinceContainingAndCityContaining(map.get("province"), map.get("city"));
     }
 }
