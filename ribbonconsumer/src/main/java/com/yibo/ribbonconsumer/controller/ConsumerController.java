@@ -25,22 +25,22 @@ public class ConsumerController {
     private LoadBalancerClient loadBalancerClient;
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerController.class);
 
-    @RequestMapping(value = "/ribbon-consumer", method = RequestMethod.GET)
+    @GetMapping("/ribbon-consumer")
     public String helloConsumer() {
         return helloService.helloService();
     }
 
-    @RequestMapping(value = "/addMission", method = RequestMethod.POST)
+    @PostMapping("/addMission")
     public String addMission(@RequestBody Mission mission) {
         return restTemplate.postForEntity("http://HELLO-SERVICE/mission", mission, String.class).getBody();
     }
 
-    @RequestMapping(value = "/getMission", method = RequestMethod.GET)
+    @GetMapping("/getMission")
     public String getMission(@RequestParam("id") Long id) {
         return restTemplate.getForEntity("http://HELLO-SERVICE/mission/{1}", String.class, id).getBody();
     }
 
-    @RequestMapping(value = "/getMyMission", method = RequestMethod.GET)
+    @GetMapping("/getMyMission")
     public String getMyMission(@RequestParam("id") Long id) {
         UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://HELLO-SERVICE/mission/{id}")
                 .build()
