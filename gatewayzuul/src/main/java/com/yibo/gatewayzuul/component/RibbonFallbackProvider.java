@@ -24,24 +24,24 @@ public class RibbonFallbackProvider implements FallbackProvider {
 
     @Override
     public ClientHttpResponse fallbackResponse() {
-        return response(HttpStatus.INTERNAL_SERVER_ERROR);
+        return response();
     }
 
-    private ClientHttpResponse response(final HttpStatus status) {
+    private ClientHttpResponse response() {
         return new ClientHttpResponse() {
             @Override
             public HttpStatus getStatusCode() {
-                return status;
+                return HttpStatus.INTERNAL_SERVER_ERROR;
             }
 
             @Override
             public int getRawStatusCode() {
-                return status.value();
+                return HttpStatus.INTERNAL_SERVER_ERROR.value();
             }
 
             @Override
             public String getStatusText() {
-                return status.getReasonPhrase();
+                return HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase();
             }
 
             @Override
