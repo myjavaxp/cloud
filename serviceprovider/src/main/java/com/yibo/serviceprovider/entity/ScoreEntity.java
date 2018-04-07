@@ -47,6 +47,7 @@ import java.math.BigDecimal;
 @Entity
 public class ScoreEntity implements Serializable {
     private static final long serialVersionUID = -4060892437167563781L;
+    @Id
     private String category;
     private Long contentId;//contentId
     private String checkNumber;//序号
