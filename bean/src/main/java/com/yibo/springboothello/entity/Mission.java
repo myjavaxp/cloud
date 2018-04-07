@@ -26,7 +26,7 @@ public class Mission implements Serializable {
 
     private Date endDate;
 
-    private Byte dealerQty;
+    private Integer dealerQty;
 
     private Byte status;
 
@@ -130,11 +130,11 @@ public class Mission implements Serializable {
         this.endDate = endDate;
     }
 
-    public Byte getDealerQty() {
+    public Integer getDealerQty() {
         return dealerQty;
     }
 
-    public void setDealerQty(Byte dealerQty) {
+    public void setDealerQty(Integer dealerQty) {
         this.dealerQty = dealerQty;
     }
 

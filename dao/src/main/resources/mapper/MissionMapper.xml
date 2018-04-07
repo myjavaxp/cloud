@@ -13,7 +13,7 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="start_date" jdbcType="DATE" property="startDate" />
     <result column="end_date" jdbcType="DATE" property="endDate" />
-    <result column="dealer_qty" jdbcType="TINYINT" property="dealerQty" />
+    <result column="dealer_qty" jdbcType="INTEGER" property="dealerQty" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
@@ -47,7 +47,7 @@
     values (#{id,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{templateId,jdbcType=BIGINT}, 
       #{brandTemplateId,jdbcType=BIGINT}, #{templateSkodaId,jdbcType=BIGINT}, #{year,jdbcType=VARCHAR}, 
       #{season,jdbcType=VARCHAR}, #{missionName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{dealerQty,jdbcType=TINYINT}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{dealerQty,jdbcType=INTEGER},
       #{status,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
       )
@@ -145,7 +145,7 @@
         #{endDate,jdbcType=DATE},
       </if>
       <if test="dealerQty != null">
-        #{dealerQty,jdbcType=TINYINT},
+        #{dealerQty,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         #{status,jdbcType=TINYINT},
@@ -201,7 +201,7 @@
         end_date = #{endDate,jdbcType=DATE},
       </if>
       <if test="dealerQty != null">
-        dealer_qty = #{dealerQty,jdbcType=TINYINT},
+        dealer_qty = #{dealerQty,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
@@ -236,7 +236,7 @@
       description = #{description,jdbcType=VARCHAR},
       start_date = #{startDate,jdbcType=DATE},
       end_date = #{endDate,jdbcType=DATE},
-      dealer_qty = #{dealerQty,jdbcType=TINYINT},
+      dealer_qty = #{dealerQty,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       is_delete = #{isDelete,jdbcType=TINYINT},
       create_user = #{createUser,jdbcType=VARCHAR},
