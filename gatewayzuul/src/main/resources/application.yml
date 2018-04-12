@@ -28,6 +28,7 @@ zuul:
   PreRequestLogFilter:
     pre:
       disable: false
+  add-host-header: true
 sidecar:
   health-uri: http://localhost:8060/health.json
   port: 8060
