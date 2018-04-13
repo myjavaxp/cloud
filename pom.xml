@@ -20,6 +20,7 @@
         <module>zipkinserver</module>
         <module>serviceprovider</module>
         <module>dao</module>
+        <module>helloserviceapi</module>
     </modules>
     <packaging>pom</packaging>
 
