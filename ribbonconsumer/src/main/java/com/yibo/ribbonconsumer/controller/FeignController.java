@@ -15,13 +15,14 @@ public class FeignController {
     private MissionFeignClient missionFeignClient;
     @Resource
     private UserFeignClient userFeignClient;
+
     @GetMapping("/mission/{id}")
     public Mission findById(@PathVariable("id") Long id) {
         return missionFeignClient.findById(id);
     }
+
     @GetMapping("/user/{id}")
     public Mission findUserById(@PathVariable("id") Long id) {
         return userFeignClient.findById(id);
     }
-
 }
