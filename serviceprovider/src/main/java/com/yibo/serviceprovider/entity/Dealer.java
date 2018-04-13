@@ -193,30 +193,28 @@ public class Dealer implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", brandId=").append(brandId);
-        sb.append(", code=").append(code);
-        sb.append(", name=").append(name);
-        sb.append(", province=").append(province);
-        sb.append(", city=").append(city);
-        sb.append(", district=").append(district);
-        sb.append(", address=").append(address);
-        sb.append(", contacts=").append(contacts);
-        sb.append(", mobile=").append(mobile);
-        sb.append(", email=").append(email);
-        sb.append(", type=").append(type);
-        sb.append(", remark=").append(remark);
-        sb.append(", status=").append(status);
-        sb.append(", createUser=").append(createUser);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", lastUpdateUser=").append(lastUpdateUser);
-        sb.append(", lastUpdateTime=").append(lastUpdateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return getClass().getSimpleName() +
+                " [" +
+                "Hash = " + hashCode() +
+                ", id=" + id +
+                ", brandId=" + brandId +
+                ", code=" + code +
+                ", name=" + name +
+                ", province=" + province +
+                ", city=" + city +
+                ", district=" + district +
+                ", address=" + address +
+                ", contacts=" + contacts +
+                ", mobile=" + mobile +
+                ", email=" + email +
+                ", type=" + type +
+                ", remark=" + remark +
+                ", status=" + status +
+                ", createUser=" + createUser +
+                ", createTime=" + createTime +
+                ", lastUpdateUser=" + lastUpdateUser +
+                ", lastUpdateTime=" + lastUpdateTime +
+                ", serialVersionUID=" + serialVersionUID +
+                "]";
     }
 }
