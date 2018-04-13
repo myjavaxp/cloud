@@ -23,8 +23,9 @@ public class MissionController {
         return "任务新增成功";
     }
 
-    @PatchMapping("/{id}")
-    public String updateMission(@RequestBody Mission mission, @PathVariable Long id) {
+    @PostMapping("/{id}")
+    public String updateMission(@RequestBody Mission mission, @PathVariable Long id) throws InterruptedException {
+        Thread.sleep(10000L);
         missionService.updateMission(mission, id);
         return "任务修改成功";
     }

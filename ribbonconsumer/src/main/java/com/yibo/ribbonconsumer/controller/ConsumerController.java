@@ -67,4 +67,9 @@ public class ConsumerController {
         LOGGER.info("===<call trace-1>==");
         return restTemplate.getForEntity("http://HELLO-SERVICE/trace-2", String.class).getBody();
     }
+    @PostMapping("/missions/{id}")
+    public String updateMission(@PathVariable("id")Long id,@RequestBody Mission mission){
+        LOGGER.info(mission.toString()+": "+id);
+        return helloService.updateMission(mission,id);
+    }
 }
