@@ -25,7 +25,7 @@ Spring Cloud首页
         let missionId = document.getElementById("missionId").value;
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", "mission/" + missionId, true);
-        xmlHttp.onreadystatechange = function () {
+        xmlHttp.onreadystatechange = () => {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 let str = xmlHttp.responseText;
                 let misson = JSON.parse(str);
@@ -48,7 +48,7 @@ Spring Cloud首页
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("POST", "mission", true);
         xmlHttp.setRequestHeader("Content-Type", "application/json");
-        xmlHttp.onreadystatechange = function () {
+        xmlHttp.onreadystatechange = () => {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 document.getElementById("1").innerHTML = xmlHttp.responseText;
             } else {
@@ -68,9 +68,9 @@ Spring Cloud首页
         };
         let data = JSON.stringify(mission);
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("PATCH", "mission/" + mission.id, true);
+        xmlHttp.open("POST", "mission/" + mission.id, true);
         xmlHttp.setRequestHeader("Content-Type", "application/json");
-        xmlHttp.onreadystatechange = function () {
+        xmlHttp.onreadystatechange = () => {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 document.getElementById("1").innerHTML = xmlHttp.responseText;
             } else {
@@ -85,7 +85,7 @@ Spring Cloud首页
         let missionId = document.getElementById("missionId").value;
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("DELETE", "mission/" + missionId, true);
-        xmlHttp.onreadystatechange = function () {
+        xmlHttp.onreadystatechange = () => {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 document.getElementById("1").innerHTML = xmlHttp.responseText;
             } else {
