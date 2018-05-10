@@ -28,3 +28,6 @@ spring:
   zipkin:
     sender:
       type: web
+management:
+  security:
+    enabled: false
