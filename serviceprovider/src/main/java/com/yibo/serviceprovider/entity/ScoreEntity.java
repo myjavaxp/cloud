@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @NamedNativeQueries({
-        @NamedNativeQuery(name = "getScoreDetail",
+        @NamedNativeQuery(name = "ScoreEntity.getScoreDetail",
                 query = "SELECT\n" +
                         "  concat(t0.number, t0.check_category) AS category,\n" +
                         "  t1.id                                AS contentId,\n" +
@@ -43,11 +43,32 @@ import java.math.BigDecimal;
                         "             WHERE status = 1 AND schedual_id = ?1) comp ON t2.id = comp.template_content_detail_id\n" +
                         "WHERE t0.template_id = ?2 AND t1.status = 1\n" +
                         "ORDER BY t0.sort, t1.sort, t2.sort;",
-                resultClass = ScoreEntity.class)})
+                resultSetMapping = "scoreEntity")})
+@SqlResultSetMapping(
+        name = "scoreEntity",
+        entities = {
+                @EntityResult(entityClass = ScoreEntity.class,
+                        fields = {
+                                @FieldResult(name = "category", column = "category"),
+                                @FieldResult(name = "contentId", column = "contentId"),
+                                @FieldResult(name = "checkNumber", column = "checkNumber"),
+                                @FieldResult(name = "checkCategory", column = "checkCategory"),
+                                @FieldResult(name = "checkContent", column = "checkContent"),
+                                @FieldResult(name = "weight", column = "weight"),
+                                @FieldResult(name = "detailId", column = "detailId"),
+                                @FieldResult(name = "criterion", column = "criterion"),
+                                @FieldResult(name = "checkResult", column = "checkResult"),
+                                @FieldResult(name = "description", column = "description"),
+                                @FieldResult(name = "imgUrl", column = "imgUrl"),
+                                @FieldResult(name = "detailNumber", column = "detailNumber"),
+                                @FieldResult(name = "compId", column = "compId")
+                        }
+                )
+        }
+)
 @Entity
 public class ScoreEntity implements Serializable {
     private static final long serialVersionUID = -4060892437167563781L;
-    @Id
     private String category;
     private Long contentId;//contentId
     private String checkNumber;//序号
@@ -59,6 +80,7 @@ public class ScoreEntity implements Serializable {
     private Byte checkResult;//判断结果
     private String description;//描述
     private String imgUrl;//图片路径
+    @Id
     private String detailNumber;//明细编号
     private Long compId;//明细项对应的申述记录
 

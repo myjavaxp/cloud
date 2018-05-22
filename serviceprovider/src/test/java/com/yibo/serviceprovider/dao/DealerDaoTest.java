@@ -17,6 +17,8 @@ public class DealerDaoTest {
     private DealerDao dealerDao;
     @Resource
     private MissionDao missionDao;
+    @Resource
+    private ScoreEntityDao scoreEntityDao;
 
     @Test
     public void testDealer() {
@@ -29,5 +31,9 @@ public class DealerDaoTest {
     public void testMission(){
         List<Mission> missions = missionDao.selectMissions();
         missions.forEach(System.out::println);
+    }
+    @Test
+    public void testScore(){
+        scoreEntityDao.getScoreDetail(1L,1L).forEach(System.out::println);
     }
 }
