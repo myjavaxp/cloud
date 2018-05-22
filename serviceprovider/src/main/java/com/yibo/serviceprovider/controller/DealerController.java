@@ -1,7 +1,9 @@
 package com.yibo.serviceprovider.controller;
 
 import com.yibo.serviceprovider.dao.DealerDao;
+import com.yibo.serviceprovider.dao.ScoreEntityDao;
 import com.yibo.serviceprovider.entity.Dealer;
+import com.yibo.serviceprovider.entity.ScoreEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,8 @@ import java.util.Map;
 public class DealerController {
     @Resource
     private DealerDao dealerDao;
+    @Resource
+    private ScoreEntityDao scoreEntityDao;
 
     @GetMapping
     public List<Dealer> getDealers() {
@@ -29,5 +33,10 @@ public class DealerController {
     @PostMapping("/query")
     public List<Dealer> getDealer(@RequestBody Map<String, String> map) {
         return dealerDao.findByProvinceContainingAndCityContaining(map.get("province"), map.get("city"));
+    }
+
+    @GetMapping("/score/{scheduleId}/{templateId}")
+    public List<ScoreEntity> getScore(@PathVariable Long scheduleId, @PathVariable Long templateId) {
+        return scoreEntityDao.getScoreDetail(scheduleId, templateId);
     }
 }
