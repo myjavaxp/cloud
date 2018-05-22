@@ -16,8 +16,6 @@ public class DealerDaoTest {
     @Resource
     private DealerDao dealerDao;
     @Resource
-    private MissionDao missionDao;
-    @Resource
     private ScoreEntityDao scoreEntityDao;
 
     @Test
@@ -26,11 +24,6 @@ public class DealerDaoTest {
         dealerList.forEach(System.out::println);
         System.out.println("------");
         dealerDao.findByIdLessThan(100L).forEach(System.out::println);
-    }
-    @Test
-    public void testMission(){
-        List<Mission> missions = missionDao.selectMissions();
-        missions.forEach(System.out::println);
     }
     @Test
     public void testScore(){
