@@ -3,24 +3,14 @@ spring:
     url: jdbc:mysql://localhost:3306/vw?characterEncoding=UTF-8&useSSL=false
     username: root
     password: root
-    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    druid:
-      initial-size: 5
-      min-idle: 5
-      max-active: 20
-      max-wait: 60000
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 1
-      test-while-idle: true
-      test-on-borrow: true
-      test-on-return: true
-      filters: slf4j,stat,wall
-      filter:
-        slf4j:
-          enabled: true
-      aop-patterns: com.yibo.springboothello.dao.*
+    hikari:
+      read-only: false
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      validation-timeout: 3000
+      maximum-pool-size: 50
   cloud:
     loadbalancer:
       retry:
@@ -38,7 +28,6 @@ spring:
       type: web
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  config-location: classpath:mybatis/mybatis-config.xml
   type-aliases-package: com.example.boottest.entity
 logging:
   level:

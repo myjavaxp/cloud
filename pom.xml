@@ -45,6 +45,7 @@
         <skipTests>true</skipTests>
         <spring-cloud.version>Edgware.SR3</spring-cloud.version>
         <zipkin.version>2.6.1</zipkin.version>
+        <hikari.version>3.1.0</hikari.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -84,6 +85,11 @@
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-autoconfigure-storage-elasticsearch-http</artifactId>
                 <version>${zipkin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikari.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
