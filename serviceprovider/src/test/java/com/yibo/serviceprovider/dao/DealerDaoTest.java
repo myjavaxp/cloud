@@ -1,7 +1,6 @@
 package com.yibo.serviceprovider.dao;
 
 import com.yibo.serviceprovider.entity.Dealer;
-import com.yibo.springboothello.entity.Mission;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,8 +24,9 @@ public class DealerDaoTest {
         System.out.println("------");
         dealerDao.findByIdLessThan(100L).forEach(System.out::println);
     }
+
     @Test
-    public void testScore(){
-        scoreEntityDao.getScoreDetail(1L,1L).forEach(System.out::println);
+    public void testScore() {
+        scoreEntityDao.getScoreDetail(1L, 1L).forEach(System.out::println);
     }
 }
